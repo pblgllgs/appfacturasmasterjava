@@ -31,4 +31,11 @@ public class Producto {
     public String getNombre() {
         return nombre;
     }
+
+    @Override
+    public String toString() {
+        return  codigo +
+                "\t" + nombre +
+                "\t" + precio ;
+    }
 }

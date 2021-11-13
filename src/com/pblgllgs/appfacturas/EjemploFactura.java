@@ -1,9 +1,6 @@
 package com.pblgllgs.appfacturas;
 
-import com.pblgllgs.appfacturas.models.Cliente;
-import com.pblgllgs.appfacturas.models.Factura;
-import com.pblgllgs.appfacturas.models.ItemFactura;
-import com.pblgllgs.appfacturas.models.Producto;
+import com.pblgllgs.appfacturas.models.*;
 
 import java.util.Scanner;
 
@@ -16,32 +13,25 @@ public class EjemploFactura {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("ingrese la descripción de la factura");
-        String desc = scanner.nextLine();
-        Factura factura = new Factura(desc,cliente);
+        Factura factura = new Factura(scanner.nextLine(),cliente);
 
         Producto producto;
-        String nombre;
-        float precio;
-        int cantidad;
+
         System.out.println();
 
         for (int i = 0;i<1;i++){
             producto = new Producto();
             System.out.print("ingresa el nombre del producto N°"+ producto.getCodigo()+": ");
-            nombre = scanner.nextLine();
-            producto.setNombre(nombre);
+            producto.setNombre(scanner.nextLine());
             System.out.print("ingresa el precio del producto: ");
-            precio = scanner.nextFloat();
-            producto.setPrecio(precio);
+            producto.setPrecio(scanner.nextFloat());
             System.out.print("ingresa la cantidad: ");
-            cantidad = scanner.nextInt();
-            ItemFactura item = new ItemFactura(cantidad,producto);
-            factura.addItemFactura(item);
+            factura.addItemFactura(new ItemFactura(scanner.nextInt(),producto));
             System.out.println();
             scanner.nextLine();
         }
 
-        System.out.println(factura.generarDetalle());
+        System.out.println(factura);
 
     }
 }
